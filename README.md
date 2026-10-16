@@ -33,7 +33,7 @@ npm run preview
 
 ## Alcance actual
 
-La aplicación es una maqueta de interfaz. Utiliza datos estáticos de ejemplo y no se conecta a un backend ni a una base de datos. Los controles de formularios, filtros, exportación y guardado son visuales; no realizan operaciones comerciales ni persisten cambios. La navegación entre las pantallas principales sí funciona.
+Los catálogos de cerveza, estilos, tipos de envase y presentaciones se consultan desde el backend local. En Productos, se usan `GET /estilo-cerveza`, `GET /cerveza`, `GET /tipo-envase` y `GET /presentacion`; las cervezas se envían mediante `POST /cerveza` y las presentaciones mediante `POST /presentacion`. Durante el desarrollo, Vite reenvía las solicitudes `/api/*` a `localhost:1137`; la API debe estar disponible localmente. Las secciones que aún no tienen endpoints muestran estados vacíos en lugar de datos de ejemplo.
 
 Pantallas incluidas:
 
@@ -49,8 +49,16 @@ Pantallas incluidas:
 
 ```text
 src/
-├── App.tsx       # Pantallas y componentes del prototipo
-├── main.tsx      # Punto de entrada de React
-└── styles.css    # Estilos responsive
+├── app/                  # Composición de la aplicación y navegación entre páginas
+├── components/
+│   ├── layout/           # Barra lateral y encabezado
+│   └── ui/               # Controles y componentes visuales reutilizables
+├── features/
+│   └── products/         # Catálogo, formularios, tipos y comunicación con la API
+├── pages/                # Páginas de navegación
+├── types/                # Tipos compartidos
+├── main.tsx              # Punto de entrada de React
+├── styles.css            # Estilos globales
+└── catalog.css           # Estilos del catálogo de productos
 ```
 # ventas-frontend
